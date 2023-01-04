@@ -1,9 +1,10 @@
+import Temp from "./Component/Temp";
 
 
 function App() {
   return (
     <div className="App">
-     <h1>App</h1>
+      <Temp />
     </div>
   );
 }
