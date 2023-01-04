@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import cloudy from './Icons/cloudy.svg';
+import TempCard from './TempCard';
 
 const Temp = () => {
   const [inputCity, setInputCity] = useState("Ahmednagar");
-  const [weatherData, setWeatherData] = useState([]);
+  const [weatherData, setWeatherData] = useState({});
 
 
   const getWeather = async () => {
     try {
-      let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity}&appid=2d9f020388f73c365b0cc6457b04233e`);
+      let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity.replace(" ", "")}&appid=2d9f020388f73c365b0cc6457b04233e`);
       let data = await response.json();
       // console.log(data);
       const { temp, humidity } = data.main;
       const { main } = data.weather[0];
       const name = data.name;
-      const { sunrise, sunset } = data.sys;
+      const { sunset, country } = data.sys;
       // console.log(temp, humidity, name, sunrise, sunset, main);
 
       const weatherInfo = {
@@ -22,10 +22,10 @@ const Temp = () => {
         humidity: humidity,
         main: main,
         name: name,
-        sunrise: sunrise,
         sunset: sunset,
+        country: country
       }
-      setWeatherData([weatherInfo]);
+      setWeatherData(weatherInfo);
     }
 
     catch (err) {
@@ -41,6 +41,7 @@ const Temp = () => {
 
   return (
     <>
+      <h1>Weather App</h1>
       <div className="main-div">
         <div className="search">
           <input type="text"
@@ -51,26 +52,7 @@ const Temp = () => {
         </div>
       </div>
 
-      <article className="widget">
-        <div className="icon">
-          <img src={cloudy} alt="" />
-        </div>
-
-        <div className="weather-info">
-          <div className="temp">
-            <span>25 &deg;</span>
-          </div>
-
-          <div className="description">
-            <div className="weather-mood">Sunny</div>
-            <div className="place">Pune, India</div>
-          </div>
-        </div>
-
-        <div className="date">
-          {new Date().toDateString()}
-        </div>
-      </article>
+      <TempCard weatherInfo={weatherData} />
     </>
   )
 }
