@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import cloudy from './Icons/cloudy.svg';
 
 const Temp = () => {
-  const [inputCity, setInputCity] = React.useState("Ahmednagar");
+  const [inputCity, setInputCity] = useState("Ahmednagar");
+  const [weatherData, setWeatherData] = useState([]);
 
 
   const getWeather = async () => {
@@ -11,13 +12,22 @@ const Temp = () => {
       let data = await response.json();
       // console.log(data);
       const { temp, humidity } = data.main;
+      const { main } = data.weather[0];
       const name = data.name;
       const { sunrise, sunset } = data.sys;
-      console.log(temp, humidity, name, sunrise, sunset);
+      // console.log(temp, humidity, name, sunrise, sunset, main);
 
-
-
+      const weatherInfo = {
+        temp: temp,
+        humidity: humidity,
+        main: main,
+        name: name,
+        sunrise: sunrise,
+        sunset: sunset,
+      }
+      setWeatherData([weatherInfo]);
     }
+
     catch (err) {
       console.log("Not found");
     }
@@ -25,6 +35,7 @@ const Temp = () => {
 
   useEffect(() => {
     getWeather();
+
   }, [])
 
 
