@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import TempCard from './TempCard';
+import './styles.css'
 
 const Temp = () => {
   const [inputCity, setInputCity] = useState("Ahmednagar");
   const [weatherData, setWeatherData] = useState({});
+  const [notFound, setNotFound] = useState(false);
 
 
   const getWeather = async () => {
@@ -26,10 +28,13 @@ const Temp = () => {
         country: country
       }
       setWeatherData(weatherInfo);
+      setNotFound(false);
     }
 
     catch (err) {
       console.log("Not found");
+      setNotFound(true);
+
     }
   }
 
@@ -41,18 +46,24 @@ const Temp = () => {
 
   return (
     <>
-      <h1>Weather App</h1>
-      <div className="main-div">
-        <div className="search">
-          <input type="text"
-            value={inputCity}
-            onChange={(e) => setInputCity(e.target.value)}
-            placeholder="Enter City Name" autoFocus="off" className='input-city' />
-          <button onClick={getWeather} className='search-btn'>Search</button>
-        </div>
-      </div>
 
-      <TempCard weatherInfo={weatherData} />
+      <div className="parent">
+        <h1>Weather App</h1>
+        <div className="main-div">
+          <div className="search">
+            <input type="text"
+              value={inputCity}
+              onChange={(e) => setInputCity(e.target.value)}
+              placeholder="Enter City Name" autoFocus="off" className='input-city' />
+            <button onClick={getWeather} className='search-btn'>Search</button>
+          </div>
+        </div>
+        {
+          notFound ? <h1>City Not Found🤪!!</h1>
+            :
+            <TempCard weatherInfo={weatherData} />
+        }
+      </div>
     </>
   )
 }

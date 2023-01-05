@@ -64,21 +64,18 @@ const TempCard = ({ weatherInfo }) => {
       </div>
 
       <div className="weather-info">
-        <div className="temp">
-          <span>temp : {tempInCel.toFixed(2)} &deg;</span>
-        </div>
+        <p className="temp">temp : <span> {tempInCel.toFixed(2)} &deg;</span></p>
 
         <div className="description">
-          <div className="weather-mood">weather : {main}</div>
-          <div className="place">{name}, {country}</div>
+          <div className="weather-mood">{main}</div>
+          <div className="place"><span>{name}</span>, {country}</div>
+        </div>
+        <p id='sunset'>Sunset🌄: <span> {sunSetInMinutes}</span></p>
+        <div className="date">
+          date : {new Date().toDateString()}
         </div>
       </div>
 
-      <p>Sunset🌄: {sunSetInMinutes}</p>
-
-      <div className="date">
-        date : {new Date().toDateString()}
-      </div>
     </article>
   )
 }
