@@ -70,7 +70,7 @@ const TempCard = ({ weatherInfo }) => {
           <div className="weather-mood">{main}</div>
           <div className="place"><span>{name}</span>, {country}</div>
         </div>
-        <p id='sunset'>Sunset🌄: <span> {sunSetInMinutes}</span></p>
+        <p id='sunset'>sunset🌄: <span> {sunSetInMinutes}</span></p>
         <div className="date">
           date : {new Date().toDateString()}
         </div>

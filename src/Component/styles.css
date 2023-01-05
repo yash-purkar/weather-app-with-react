@@ -1,9 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&family=Mulish&family=Noto+Serif:wght@700&family=Open+Sans:wght@300;600&family=Raleway:wght@200;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Montserrat:wght@300;600&family=Mulish&family=Noto+Serif:wght@700&family=Open+Sans:wght@300;600&family=Raleway:wght@200;600&display=swap");
+
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: content-box;
   letter-spacing: 1.5px;
-  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
 }
 
 body {
@@ -31,6 +34,7 @@ h1 {
   padding: 0.5rem;
   border-top-left-radius: 0.3rem;
   border-bottom-left-radius: 0.3rem;
+  font-family: "Lato", sans-serif;
   outline-color: blueviolet;
   outline-width: 0.2px;
 }
