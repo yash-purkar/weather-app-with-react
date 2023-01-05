@@ -13,7 +13,6 @@ const Temp = () => {
     try {
       let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${inputCity.replace(" ", "")}&appid=2d9f020388f73c365b0cc6457b04233e`);
       let data = await response.json();
-      setLoading(false)
       // console.log(data);
       const { temp, humidity } = data.main;
       const { main } = data.weather[0];
@@ -31,6 +30,7 @@ const Temp = () => {
       }
       setWeatherData(weatherInfo);
       setNotFound(false);
+      setLoading(false)
     }
 
     catch (err) {
