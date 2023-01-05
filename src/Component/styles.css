@@ -28,6 +28,19 @@ h1 {
   letter-spacing: 1px;
 }
 
+#loading {
+  color: blueviolet;
+  text-align: center;
+  margin-top: 350px;
+  letter-spacing: 1px;
+}
+
+#not-found {
+  text-align: center;
+  margin: 50px;
+  letter-spacing: 1px;
+}
+
 .input-city {
   outline: dotted;
   border: none;
